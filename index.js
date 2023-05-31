@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require("express-session");
 const RedisStore = require("connect-redis").default;
-const createClient = require("redis");
+const { createClient } = require("redis");
 const path = require('path');
 const app = express();
 const config = {
@@ -56,6 +56,6 @@ app.get('/robots.txt', (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`server is running at port ${port}`);
+app.listen(config.port, () => {
+    console.log(`server is running at port ${config.port}`);
 })
