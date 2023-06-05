@@ -36,23 +36,23 @@ app.use(session({
 
 
 app.get('/', (req, res) => {
-    res.sendFile("./client/build/index.html");
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.get('/index.html', (req, res) => {
-    res.sendFile("./client/build/index.html");
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.get('/asset-manifest.json', (req, res) => {
-    res.sendFile("./client/build/asset-manifest.json");
+    res.sendFile(path.join(__dirname, "./client/build/asset-manifest.json"));
 });
 
 app.get('/manifest.json', (req, res) => {
-    res.sendFile("./client/build/manifest.json");
+    res.sendFile(path.join(__dirname, "./client/build/manifest.json"));
 });
 
 app.get('/robots.txt', (req, res) => {
-    res.sendFile("./client/build/robots.txt");
+    res.sendFile(path.join(__dirname, "./client/build/robots.txt"));
 });
 
 
