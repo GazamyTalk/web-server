@@ -1,7 +1,7 @@
 const express = require('express');
-const session = require("express-session");
-const RedisStore = require("connect-redis").default;
-const { createClient } = require("redis");
+// const session = require("express-session");
+// const RedisStore = require("connect-redis").default;
+// const { createClient } = require("redis");
 const path = require('path');
 const app = express();
 const config = {
@@ -11,28 +11,28 @@ const config = {
 }
 
 
-let redisClient = createClient({ url: config.sessionStoreUrl });
-redisClient.connect().catch(console.error);
+// let redisClient = createClient({ url: config.sessionStoreUrl });
+// redisClient.connect().catch(console.error);
 
-let redisStore = new RedisStore({
-  client: redisClient,
-  prefix: "gazamytalk:",
-});
+// let redisStore = new RedisStore({
+//   client: redisClient,
+//   prefix: "gazamytalk:",
+// });
 
 app.use('/static', express.static(path.join(__dirname, './client/build/static')));
 
-app.use(session({
-    secret: config.sessionSecret,
-    name: 'sessionid',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        secure: false,
-        maxAge: 3600 * 100
-    },
-    store: redisStore
-}));
+// app.use(session({
+//     secret: config.sessionSecret,
+//     name: 'sessionid',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//         httpOnly: true,
+//         secure: false,
+//         maxAge: 3600 * 100
+//     },
+//     store: redisStore
+// }));
 
 
 app.get('/', (req, res) => {
